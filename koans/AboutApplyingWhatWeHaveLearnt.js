@@ -106,8 +106,22 @@ describe("About Applying What We Have Learnt", function() {
     var ingredientCount = { "{ingredient name}": 0 };
 
     /* chain() together map(), flatten() and reduce() */
+        _.chain(products)
+           .map(function(x){
+              return (x.ingredients);
+           })
+           .flatten()
+           .map(function(x){
+              if(ingredientCount[x]){
+                ingredientCount[x] += 1;
 
-    expect(ingredientCount['mushrooms']).toBe(FILL_ME_IN);
+              }else{
+                ingredientCount[x] = 1;
+              }
+           })
+           .value();
+
+    expect(ingredientCount['mushrooms']).toBe(2);
   });
 
   /*********************************************************************************/
