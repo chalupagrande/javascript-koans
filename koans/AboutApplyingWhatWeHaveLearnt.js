@@ -151,8 +151,54 @@ describe("About Applying What We Have Learnt", function() {
     
   });
 
+ ********/
+
   it("should find the 10001st prime", function () {
 
+
+
+    var findNthPrime = function(n){
+    var start = new Date().getTime();
+
+    var result = 2;
+    var primesFound = [];
+    if(n <= 1){
+      return -1;
+    }
+    while(primesFound.length < n){
+      if(result === 2){
+        primesFound.push(result);
+        result++;
+      }else if(result % 2 ===0){
+        result++;
+      }else{
+        var isPrime = true;
+        for (var i = 0; i < primesFound.length; i++){ 
+          if(primesFound[i] > Math.ceil(result/2)){
+            break;
+          }
+          else if(result % primesFound[i]===0){
+            isPrime = false;
+            break;
+          }
+        }
+        //pushes prime number to list or increments it
+        if(isPrime){
+          primesFound.push(result);
+          result++;
+        }else{
+          result++;
+        }
+      }
+    }
+    var end = new Date().getTime();
+    var time = end - start;
+    console.log('It took '+time/1000/60 +' mins to find this prime number.');
+    return primesFound[n-1];
+    
+    };//end function fincNthPrime(n)
+
+  expect(findNthPrime(10001)).toBe(104743);
   });
-  */
+  
 });

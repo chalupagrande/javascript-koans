@@ -20,7 +20,7 @@ describe("About Higher Order Functions", function () {
     var numbers = [1, 2, 3];
     var numbersPlus1 = _(numbers).map(function(x) { return x + 1 });
     
-    expect(numbersPlus1).toEqual([2 ,3 ,4]);
+    expect(numbersPlus1).toEqual([2 ,3 ,4]);  
     expect(numbers).toEqual([1, 2, 3]);
   });
     
@@ -82,7 +82,7 @@ describe("About Higher Order Functions", function () {
   });
 
   it("should use chain() ... .value() to use multiple higher order functions", function() {
-    var result = _([ [0, 1], 2 ]).chain()
+    var result = _([ [0, 1], 2 ]).chain()     
                      .flatten()
                      .map(function(x) { return x+1 } )
                      .reduce(function (sum, x) { return sum + x })
